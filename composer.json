@@ -1,0 +1,20 @@
+{
+    "name": "weaverer/translation",
+    "description": "在laravel项目外使用laravel翻译包",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Weaverer\\Translation\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ma jie"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.2",
+        "illuminate/translation": "^11.0"
+    }
+}
