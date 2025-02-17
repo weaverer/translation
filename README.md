@@ -1,0 +1,1 @@
+#在laravel项目外使用illuminate/translation包

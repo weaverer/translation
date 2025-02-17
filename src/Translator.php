@@ -10,7 +10,7 @@ use Illuminate\Translation\Translator as LaravelTranslator;
 
 class Translator implements TranslatorContract
 {
-    private static array $instance;
+    private static array $instance = [];
     private LaravelTranslator $translator;
 
     private function __construct($path)
@@ -24,28 +24,28 @@ class Translator implements TranslatorContract
     {
         $dir = $dir ?? __DIR__.'/../vendor/illuminate/translation/lang';
         $dirHash = md5($dir);
-        if (null === self::$instance[$dir]) {
+        if (!isset(self::$instance[$dirHash])) {
             self::$instance[$dirHash] = new self($dir);
         }
         return self::$instance[$dirHash];
     }
 
-    public function get($key, array $replace = [], string $locale = null): string
+    public function get($key, array $replace = [], $locale = null)
     {
         return $this->translator->get($key, $replace, $locale);
     }
 
-    public function choice($key, $number, array $replace = [], $locale = null): string
+    public function choice($key, $number, array $replace = [], $locale = null)
     {
         return $this->translator->choice($key, $number, $replace, $locale);
     }
 
-    public function getLocale(): string
+    public function getLocale()
     {
         return $this->translator->getLocale();
     }
 
-    public function setLocale($locale): void
+    public function setLocale($locale)
     {
         $this->translator->setLocale($locale);
     }
